@@ -16,6 +16,7 @@ import (
 type Application struct {
 	Name, AccessToken, Sid, BaseURL, AuthString string
 	Languages                                   map[string]string
+	LanguagesSorted []Language
 	Delay                                       time.Duration
 }
 
@@ -50,6 +51,9 @@ func (app *Application) loadLanguages() bool {
 		log.Printf("Error decoding languages: %s", err)
 		return false
 	}
+
+	app.LanguagesSorted = buildArrayOfLanguages(app.Languages)
+	SortLanguagesByName(app.LanguagesSorted)
 
 	return true
 }

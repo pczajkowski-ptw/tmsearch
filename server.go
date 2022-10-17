@@ -19,7 +19,7 @@ var errorPage = template.Must(template.ParseFiles("./html/error.html"))
 
 func serveIndex(w http.ResponseWriter, _ *http.Request) {
 	t := template.Must(template.ParseFiles("./html/index.html"))
-	t.Execute(w, app.Languages)
+	t.Execute(w, app.LanguagesSorted)
 }
 
 func displaySearchResults(w http.ResponseWriter, r *http.Request) {
